@@ -127,15 +127,18 @@ const linkedList = (() => {
         return index;
     }
 
-    function toString(
-        currentNode = newNode,
-        stringedNode = "") {
-        
-        if (currentNode.next === null) return stringedNode += `( ${currentNode.value} ) -> null`;
-        else {
+    function toString() {
+        let currentNode = newNode;
+        let stringedNode = "";
+
+        while (currentNode.next !== null) {
             stringedNode += `( ${currentNode.value} ) -> `;
-            return toString(currentNode.next, stringedNode);
+            currentNode = currentNode.next;
+
+            if (currentNode.next === null) return stringedNode += `( ${currentNode.value} ) -> null`;
         }
+
+        return stringedNode;
     }
 
     function insertAt(
