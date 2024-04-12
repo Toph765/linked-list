@@ -179,7 +179,19 @@ const linkedList = (() => {
     }
 
     return {
-        getNode, append, prepend, size, head, tail, at, pop, contains, find,toString, insertAt, removeAt
+        getNode,
+        append,
+        prepend,
+        size,
+        head,
+        tail,
+        at,
+        pop,
+        contains,
+        find,
+        toString,
+        insertAt,
+        removeAt
     }
 })()
 
