@@ -161,20 +161,21 @@ const linkedList = (() => {
         return newNode;
     }
 
-    function removeAt(
-        index,
-        currentNode = newNode,
-        count = 0) {
-        
+    function removeAt(index) {
+        let currentNode = newNode;
+        let count = 0;
+
         if (count < index && currentNode.next === null) return "error: invalid index";
 
-        if (count === index - 1) {
-            let tempNode = currentNode.next.next;
-            return currentNode.next = tempNode;
-        } else {
+        while (count !== index - 1) {
             count += 1;
-            return removeAt(index, currentNode.next, count);
+            currentNode = currentNode.next;
         }
+
+        let tempNode = currentNode.next.next;
+        currentNode.next = tempNode;
+        
+        return newNode;
     }
 
     return {
