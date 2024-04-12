@@ -113,18 +113,18 @@ const linkedList = (() => {
         return true;
     }
 
-    function find(
-        value,
-        currentNode = newNode,
-        index = 0) {
-        
-        if (currentNode.value === value) return index;
+    function find(value) {
+        let currentNode = newNode;
+        let index = 0;
 
-        if (currentNode.value != value && currentNode.next === null) { return null }
-        else {
-            index += 1
-            return find(value, currentNode.next, index)
+        while (currentNode.value !== value) {
+            index += 1;
+            currentNode = currentNode.next;
+
+            if (currentNode.value !== value && currentNode.next === null) return null;
         }
+
+        return index;
     }
 
     function toString(
