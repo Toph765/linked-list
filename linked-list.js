@@ -101,14 +101,16 @@ const linkedList = (() => {
         return newNode;
     }
 
-    function contains(
-        value,
-        currentNode = newNode) {
-        
-        if (currentNode.value != value && currentNode.next === null) return false;
+    function contains(value) {
+        let currentNode = newNode;
 
-        if (currentNode.value === value) return true
-        else return contains(value, currentNode.next);
+        while (currentNode.value !== value) {
+            currentNode = currentNode.next;
+
+            if (currentNode.value !== value && currentNode.next === null) return false;
+        }
+
+        return true;
     }
 
     function find(
