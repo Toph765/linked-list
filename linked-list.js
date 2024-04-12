@@ -87,24 +87,18 @@ const linkedList = (() => {
         tempNode.value = currentNode.value;
 
         return tempNode;
-        
-        /* if (count < index && currentNode.next === null) return "error: invalid index";
-
-        if (count === index) {
-            let queriedNode = node();
-            queriedNode.value = currentNode.value;
-            return queriedNode;
-        } else {
-            count += 1;
-            return at(index, count, currentNode.next);
-        } */
     }
 
-    function pop(currentNode = newNode) {
-        if (currentNode.next.next === null) {
-            currentNode.next = null;
-            return newNode;
-        } else return pop(currentNode.next);
+    function pop() {
+        let currentNode = newNode;
+
+        while (currentNode.next.next !== null) {
+            currentNode = currentNode.next;
+        }
+
+        currentNode.next = null;
+
+        return newNode;
     }
 
     function contains(
