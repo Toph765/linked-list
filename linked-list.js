@@ -141,24 +141,24 @@ const linkedList = (() => {
         return stringedNode;
     }
 
-    function insertAt(
-        value,
-        index,
-        currentNode = newNode,
-        count = 0) {
-        
-        if (count < index && currentNode.next === null) return "error: invalid index";
+    function insertAt(value, index) {
+        let currentNode = newNode;
+        let count = 0;
 
-        if (count === index - 1) {
-            let tempNode = currentNode.next;
-            let standByNode = node();
-            standByNode.value = value;
-            standByNode.next = tempNode;
-            return currentNode.next = standByNode;
-        } else {
+        while (count !== index - 1) {
             count += 1;
-            return insertAt(value, index, currentNode.next, count)
+            currentNode = currentNode.next;
+
+            if (count < index && currentNode.next === null) return "error: invalid index";
         }
+
+        let tempNode = currentNode.next;
+        let standByNode = node();
+        standByNode.value = value;
+        standByNode.next = tempNode;
+        currentNode.next = standByNode;
+
+        return newNode;
     }
 
     function removeAt(
