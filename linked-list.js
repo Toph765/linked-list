@@ -10,20 +10,23 @@ const linkedList = (() => {
 
     function getNode() {return newNode};
 
-    function append(
-        value,
-        currentNode = newNode) {
-        
-        if (currentNode.value === null && currentNode.next === null) {
+    function append(value) {
+        let currentNode = newNode;
+        let tempNode = node();
+
+        if (currentNode.value === null) {
             currentNode.value = value;
             return currentNode;
         }
-        else if (currentNode.value && currentNode.next === null) {
-            let appNode = node(value);
-            currentNode.next = appNode;
-            return newNode
-        }
-        else return append(value, currentNode.next);
+
+        while (currentNode.next !== null) {
+            currentNode = currentNode.next;
+        };
+
+        tempNode.value = value;
+        currentNode.next = tempNode;
+
+        return currentNode;
     }
 
     function prepend(value) {
