@@ -72,12 +72,23 @@ const linkedList = (() => {
         return currentNode;
     }
 
-    function at(
-        index,
-        count = 0,
-        currentNode = newNode) {
-        
+    function at(index) {
+        let currentNode = newNode;
+        let count = 0;
+        let tempNode;
+
         if (count < index && currentNode.next === null) return "error: invalid index";
+
+        while (count !== index) {
+            count += 1;
+            currentNode = currentNode.next;
+        }
+        tempNode = node();
+        tempNode.value = currentNode.value;
+
+        return tempNode;
+        
+        /* if (count < index && currentNode.next === null) return "error: invalid index";
 
         if (count === index) {
             let queriedNode = node();
@@ -86,7 +97,7 @@ const linkedList = (() => {
         } else {
             count += 1;
             return at(index, count, currentNode.next);
-        }
+        } */
     }
 
     function pop(currentNode = newNode) {
