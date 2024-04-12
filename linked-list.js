@@ -54,13 +54,6 @@ const linkedList = (() => {
         }
 
         return count;
-        
-        /* if (currentNode.value === null && currentNode.next === null) return count = 0;
-        if (currentNode.value && currentNode.next === null) return count;
-        else {
-            count += 1;
-            return size(count, currentNode.next);
-        } */
     }
 
     function head() {
@@ -69,12 +62,21 @@ const linkedList = (() => {
         return headNode
     }
 
-    function tail(currentNode = newNode) {
-        if (currentNode.value && currentNode.next === null) {
+    function tail() {
+        let currentNode = newNode;
+
+        while (currentNode.next !== null) {
+            currentNode = currentNode.next;
+        }
+
+        return currentNode;
+
+
+        /* if (currentNode.value && currentNode.next === null) {
             let tailNode = node();
             tailNode.value = currentNode.value;
             return tailNode;
-        } else return tail(currentNode.next);
+        } else return tail(currentNode.next); */
     }
 
     function at(
