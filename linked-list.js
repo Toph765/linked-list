@@ -42,16 +42,25 @@ const linkedList = (() => {
         }
     }
 
-    function size(
-        count = 1,
-        currentNode = newNode) {
+    function size() {
+        let count = 1;
+        let currentNode = newNode;
+
+        if (currentNode.value === null) return count = 0;
+
+        while (currentNode.next !== null) {
+            count += 1;
+            currentNode = currentNode.next;
+        }
+
+        return count;
         
-        if (currentNode.value === null && currentNode.next === null) return count = 0;
+        /* if (currentNode.value === null && currentNode.next === null) return count = 0;
         if (currentNode.value && currentNode.next === null) return count;
         else {
             count += 1;
             return size(count, currentNode.next);
-        }
+        } */
     }
 
     function head() {
