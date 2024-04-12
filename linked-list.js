@@ -70,13 +70,6 @@ const linkedList = (() => {
         }
 
         return currentNode;
-
-
-        /* if (currentNode.value && currentNode.next === null) {
-            let tailNode = node();
-            tailNode.value = currentNode.value;
-            return tailNode;
-        } else return tail(currentNode.next); */
     }
 
     function at(
